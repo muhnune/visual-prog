@@ -100,16 +100,18 @@ class Ui_MainWindow(object):
         discount_amount = subtotal * (discount / 100)
         final_price = subtotal - discount_amount
         
-        self.listWidget.addItem(f"{product} x {quantity} - Rp {final_price:,.0f}")
+        self.listWidget.addItem(f"{product} x {quantity} - Rp {final_price:,.0f} (Discount: {discount}%)")
         self.update_total()
     
     def update_total(self):
         total = 0
         for index in range(self.listWidget.count()):
             text = self.listWidget.item(index).text()
-            total += int(text.split('- Rp ')[1].replace(',', ''))
-        
+            price_part = text.split('- Rp ')[1].split(' ')[0] 
+            total += int(price_part.replace(',', '')) 
+
         self.label_4.setText(f"Total: Rp {total:,.0f}")
+
     
     def clear_cart(self):
         self.listWidget.clear()

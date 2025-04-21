@@ -90,6 +90,6 @@ class FontColorApp(QWidget):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = FontColorAdjuster()
+    window = FontColorApp()
     window.show()
     sys.exit(app.exec())
